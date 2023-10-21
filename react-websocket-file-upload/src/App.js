@@ -5,6 +5,8 @@ const socket = io('http://localhost:5000');
 
 function App() {
   const [file, setFile] = useState(null);
+  const [processing, setProcessing] = useState(false);
+  const [resultsAvailable, setResultsAvailable] = useState(false);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -18,6 +20,7 @@ function App() {
   };
 
   const handleUpload = async () => {
+    setProcessing(true);
     const formData = new FormData();
     formData.append('file', file);
 
@@ -27,14 +30,30 @@ function App() {
     });
 
     const data = await response.json();
+    setProcessing(false);
+    setResultsAvailable(true);
     socket.emit('process', data.filename);
   };
 
   return (
     <div className="App">
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
-      <p>{message}</p>
+      <header>
+        <h1>Logo</h1>
+      </header>
+      <main>
+        { processing ? (
+          <div>Processing</div>
+        ) : (
+          resultsAvailable ? (
+            <div>Results</div>
+          ) : (
+            <div className="Drop-zone" ondrop={console.log("Hi")}>
+            <input type="file" accept=".pdf" onChange={handleFileChange} required />
+            <input type="submit" value="Upload file" onClick={handleUpload} />
+          </div>
+          )
+        )}
+      </main>
     </div>
   );
 }
