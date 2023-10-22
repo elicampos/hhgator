@@ -64,7 +64,7 @@ def chat_gpt_request(text):
     which points out Non-trivial facts about how the problem was solved or a deeper explanation to keep in-mind when facing similar problems. Lastly under  category should be the formula that may serve, useful
     for those types of questions under that topic(don't go beyond the scope of the problem)(please note that this can also be confirmed with the number before the paragraph of the last question), don't use any specific formulas with values from the problems, and  written without special characters. Finally a section in which teaches the category concept to someone who has never seen it before in about 5 sentences.
     Sample Output for one category in categories so u need 4 more:
-    "Categories(EXACT NAME)": {
+    "Categories(EXACT NAME)(CANNOT BE TRUE OR FALSE)": {
     "DO NOT COPY(Topics)": {
       "Questions Covered": [DO NOT COPY(info),
       "Tips and Tricks(EXACT NAME)": [
