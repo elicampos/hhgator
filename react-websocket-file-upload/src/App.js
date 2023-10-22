@@ -61,8 +61,15 @@ function App() {
       ) : (
         resultsAvailable ? (
           <div className="Results">
-            <p>Results</p>
-            {showChart && <MyPieChart lastUpdated={fileUploadedTimestamp} />}
+            <section id="section1">
+              <h2>Categories</h2>
+            </section>
+            <div className="Right-side">
+              <section id="section2">
+                <h2>Topic Breakdown</h2>
+                {showChart && <MyPieChart lastUpdated={fileUploadedTimestamp} />}
+              </section>
+            </div>
           </div>
         ) : (
           <div>

@@ -140,12 +140,36 @@ input[type=file]::file-selector-button:focus {
 progress {
   width: 40vw;
   height: auto;
+  color: #61cdbb;
 }
 
 .Results {
-  width: 50vw;
+  width: 80vw;
   height: 80vh;
+  margin-top: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5vw;
+}
+
+section {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-color: #000;
+  border-style: solid;
+  border-radius: 25px;
+}
+
+#section1 {
+  width: 45vw;
+  overflow-y: scroll;
+}
+
+#section2 {
+  width: 35vw;
+  height: 70vh;
+  margin: 5px;
 }

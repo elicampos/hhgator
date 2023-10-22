@@ -36,10 +36,10 @@ const MyPieChart = ({lastUpdated}) => {
 
     // Empty dependency array means this useEffect runs once when the component mounts
     return (
-        <div style={{ height: '65vh', width:"auto",minWidth: '50vw' }}>
+        <div style={{ height: '65vh', width:"auto"}}>
             <ResponsivePie
                 data={data}
-                margin={{ top: 100, right: 250, bottom: 100, left: 250 }}
+                margin={{ top: 100, right: 200, bottom: 100, left: 180 }}
                 innerRadius={0.5}
                 padAngle={0.7}
                 cornerRadius={3}
