@@ -18,6 +18,7 @@ function App() {
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+    // handleUpload();
   };
 
   const handleUpload = async () => {
@@ -39,13 +40,14 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Logo</h1>
+        <h1>Examlytics</h1>
       </header>
       <main>
         { processing ? (
           <div>
             <h2>Explanation of website.</h2>
               <div className="Drop-zone">
+                <h3>Processing your document...</h3>
               <progress max="100" value="75"></progress>
               </div>
           </div>          
@@ -58,8 +60,9 @@ function App() {
             <div>
               <h2>Explanation of website.</h2>
               <div className="Drop-zone" ondrop={console.log("Hi")}>
-                <input type="file" accept=".pdf" onChange={handleFileChange} required />
-                <input type="submit" value="Upload file" onClick={handleUpload} />
+                <label for="upload-file" >Drag and drop a file or</label>
+                <input id="upload-file" className="button" type="file" accept=".pdf" onChange={handleFileChange} required />
+                <input className= "Upload-button" type="submit" value="Upload file" onClick={handleUpload} />
               </div>
             </div>
           )
