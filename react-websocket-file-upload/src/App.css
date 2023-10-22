@@ -65,6 +65,12 @@ main {
   background-color: white;
 }
 
+h2 {
+  width: 70vw;
+  text-align: left;
+  margin: 30px;
+}
+
 .Drop-zone {
   /* width: 50vw; */
   min-width: 50vw;

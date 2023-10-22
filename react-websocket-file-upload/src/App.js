@@ -52,7 +52,7 @@ function App() {
     <main>
       { processing ? (
         <div>
-          <h2>Explanation of website.</h2>
+          <h2>Examlytics transforms practice exam PDFs into concise study insights, categorizing crucial formulas, tips, and summaries. By uploading exams, you can quickly identify key topics and strategies, enhancing both regular study and last-minute prep.</h2>
             <div className="Drop-zone">
               <h3>Processing your document...</h3>
             <progress max="100" value="75"></progress>
@@ -73,7 +73,7 @@ function App() {
           </div>
         ) : (
           <div>
-            <h2>Explanation of website.</h2>
+            <h2>Examlytics transforms practice exam PDFs into concise study insights, categorizing crucial formulas, tips, and summaries. By uploading exams, you can quickly identify key topics and strategies, enhancing both regular study and last-minute prep.</h2>
             <div className="Drop-zone" onDrop={console.log("Hi")}>
               <label htmlFor="upload-file" >Drag and drop a file or</label>
               <input id="upload-file" className="button" type="file" accept=".pdf" onChange={handleFileChange} required />
