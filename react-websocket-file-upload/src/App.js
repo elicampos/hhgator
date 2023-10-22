@@ -43,9 +43,12 @@ function App() {
       </header>
       <main>
         { processing ? (
-          <div className="Drop-zone">
-            <progress max="100" value="75"></progress>
-          </div>
+          <div>
+            <h2>Explanation of website.</h2>
+              <div className="Drop-zone">
+              <progress max="100" value="75"></progress>
+              </div>
+          </div>          
         ) : (
           resultsAvailable ? (
             <div className="Results">
