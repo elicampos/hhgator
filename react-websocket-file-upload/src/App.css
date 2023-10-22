@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
 }
 
 .App-logo {
@@ -37,20 +41,33 @@
   }
 }
 
+header {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+  background-color: #61cdbb;
+}
+
 main {
+  width: 75vw;
+  margin: 10px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 5px; */
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  flex: 1;
+  background-color: white;
 }
 
 .Drop-zone {
   width: 50vw;
   height: 80vh;
-  border: #383736;
+  margin: 10px 0px 10px 0px;
+  border: #61cdbb;
   border-width: 4px;
   border-style: dashed;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
