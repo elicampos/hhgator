@@ -39,7 +39,7 @@ const MyPieChart = ({lastUpdated}) => {
         <div style={{ height: '65vh', width:"auto"}}>
             <ResponsivePie
                 data={data}
-                margin={{ top: 100, right: 200, bottom: 100, left: 200 }}
+                margin={{ top: 0, right: 200, bottom: 100, left: 50 }}
                 innerRadius={0.5}
                 padAngle={0.7}
                 cornerRadius={3}
@@ -55,6 +55,7 @@ const MyPieChart = ({lastUpdated}) => {
                         ]
                     ]
                 }}
+                enableArcLinkLabels={false}
                 arcLinkLabelsSkipAngle={10}
                 arcLinkLabelsTextColor="#333333"
                 arcLinkLabelsThickness={2}
@@ -144,14 +145,14 @@ const MyPieChart = ({lastUpdated}) => {
                         anchor: 'right',
                         direction: 'column',
                         justify: false,
-                        translateX: 0,
-                        translateY: 56,
+                        translateX: -60,
+                        translateY: 200,
                         itemsSpacing: 5,
                         itemWidth: -10,
                         itemHeight: 18,
                         itemTextColor: '#999',
                         itemDirection: 'left-to-right',
-                        itemOpacity: 0,
+                        itemOpacity: 1,
                         symbolSize: 18,
                         symbolShape: 'circle',
                         effects: [
