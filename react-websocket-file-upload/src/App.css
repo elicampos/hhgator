@@ -154,6 +154,8 @@ progress {
 }
 
 section {
+  max-width: 45vw;
+  min-width: 40vw;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -164,12 +166,12 @@ section {
 }
 
 #section1 {
-  width: 45vw;
+  /* width: 45vw; */
   overflow-y: scroll;
 }
 
 #section2 {
-  width: 35vw;
+  /* width: 35vw; */
   height: 70vh;
   margin: 5px;
 }
