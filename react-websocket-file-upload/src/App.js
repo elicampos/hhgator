@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MyPieChart from './MyPieChart';  // Import the pie chart component
+import MyPieChart from './MyPieChart'; 
 import io from 'socket.io-client';
-import './App.css'
+import './App.css';
 
 const socket = io('http://localhost:5000');
 
@@ -10,10 +10,16 @@ function App() {
   const [message, setMessage] = useState('');
   const [processing, setProcessing] = useState(false);
   const [resultsAvailable, setResultsAvailable] = useState(false);
+  // State to store the parsed categories data
+  const [categoriesData, setCategoriesData] = useState({}); 
 
   useEffect(() => {
     socket.on('response', (data) => {
-      setMessage(data);
+      const parsedData = JSON.parse(data);
+      // Parse and store the categories data
+      setCategoriesData(parsedData.Categories); 
+      // Now we have results, so we set this to true
+      setResultsAvailable(true); 
     });
   }, []);
 
@@ -21,9 +27,8 @@ function App() {
     setFile(e.target.files[0]);
   };
 
-  const [showChart, setShowChart] = useState(false); 
-  const [fileUploadedTimestamp, setFileUploadedTimestamp] = useState(Date.now()); 
- 
+  const [showChart, setShowChart] = useState(false);
+  const [fileUploadedTimestamp, setFileUploadedTimestamp] = useState(Date.now());
 
   const handleUpload = async () => {
     setProcessing(true);
@@ -37,32 +42,57 @@ function App() {
 
     const data = await response.json();
     setProcessing(false);
-    setResultsAvailable(true);
     socket.emit('process', data.filename);
-    setShowChart(true); 
-    // Update the timestamp every time a file is uploaded
-    setFileUploadedTimestamp(Date.now());  
+    setShowChart(true);
+    setFileUploadedTimestamp(Date.now());
   };
 
   return (
     <div className="App">
-    <header>
-      <h1>Examlytics</h1>
-    </header>
-    <main>
-      { processing ? (
-        <div>
-          <h2>Examlytics transforms practice exam PDFs into concise study insights, categorizing crucial formulas, tips, and summaries. By uploading exams, you can quickly identify key topics and strategies, enhancing both regular study and last-minute prep.</h2>
-            <div className="Drop-zone">
-              <h3>Processing your document...</h3>
+      <header>
+        <h1>Examlytics</h1>
+      </header>
+      <main>
+        {processing ? (
+          <div>
+            <h2>Processing your document...</h2>
             <progress max="100" value="75"></progress>
-            </div>
-        </div>          
-      ) : (
-        resultsAvailable ? (
+          </div>
+        ) : resultsAvailable ? (
           <div className="Results">
             <section id="section1">
               <h2>Categories</h2>
+              <div className="Category-list">
+                {Object.keys(categoriesData).map((categoryName) => {
+                  const category = categoriesData[categoryName];
+                  return (
+                    <div key={categoryName}>
+                      <h3>{categoryName}</h3>
+                      <p>Questions Covered: {category['Questions Covered'].join(', ')}</p>
+                      <div>
+                        <h4>Tips and Tricks</h4>
+                        <ul>
+                          {category['Tips and Tricks'].map((tip, index) => (
+                            <li key={index}>{tip}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4>Useful Formulas</h4>
+                        <ul>
+                          {category['Useful Formulas'].map((formula, index) => (
+                            <li key={index}>{formula}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4>Category Summary</h4>
+                        <p>{category['Category Summary']}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </section>
             <div className="Right-side">
               <section id="section2">
@@ -73,17 +103,16 @@ function App() {
           </div>
         ) : (
           <div>
-            <h2>Examlytics transforms practice exam PDFs into concise study insights, categorizing crucial formulas, tips, and summaries. By uploading exams, you can quickly identify key topics and strategies, enhancing both regular study and last-minute prep.</h2>
-            <div className="Drop-zone" onDrop={console.log("Hi")}>
-              <label htmlFor="upload-file" >Drag and drop a file or</label>
+            <h2>Upload a file to begin...</h2>
+            <div className="Drop-zone" onDrop={() => console.log('Dropped!')}>
+              <label htmlFor="upload-file">Drag and drop a file or</label>
               <input id="upload-file" className="button" type="file" accept=".pdf" onChange={handleFileChange} required />
-              <input className= "Upload-button" type="submit" value="Upload file" onClick={handleUpload} />
+              <input className="Upload-button" type="submit" value="Upload file" onClick={handleUpload} />
             </div>
           </div>
-        )
-      )}
-    </main>
-  </div> 
+        )}
+      </main>
+    </div>
   );
 }
 
