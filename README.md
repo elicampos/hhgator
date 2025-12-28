@@ -4,6 +4,8 @@ Examlytics is an intelligent, AI-powered educational tool designed to help stude
 
 Built with **React**, **TypeScript**, **Tailwind CSS**, and powered by **Google's Gemini 3 Flash & Pro** models.
 
+Live demo here: [https://examlytics-ba24a.web.app/](https://examlytics-ba24a.web.app/)
+
 ## Key Features
 
 ### 1. Two Powerful Modes
