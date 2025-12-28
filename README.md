@@ -58,7 +58,7 @@ Built with **React**, **TypeScript**, **Tailwind CSS**, and powered by **Google'
     - Create a `.env` file in the root directory.
     - Add your key:
       ```env
-      API_KEY=your_google_gemini_api_key_here
+      API_KEY=your_google_VITE_GEMINI_API_KEY_here
       ```
     - _Note: Ensure your build tool (e.g., Vite/Webpack) is configured to expose `process.env.API_KEY` or `import.meta.env` appropriately._
 
