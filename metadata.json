@@ -1,0 +1,5 @@
+{
+  "name": "ExamPrep AI",
+  "description": "An intelligent exam analysis and practice generation tool using Gemini 3 Flash.",
+  "requestFramePermissions": []
+}
